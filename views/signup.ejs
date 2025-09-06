@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <%- include('./partials/head.ejs') %>
+  <title>Blogster | Sign Up</title>
+  <style>
+    body {
+      background-color: #000;
+      color: #fff;
+    }
+
+    .card {
+      background-color: #111;
+      color: #fff;
+      border: 1px solid #444;
+    }
+
+    .form-control {
+      background-color: #222;
+      color: #fff;
+      border: 1px solid #555;
+    }
+
+    .form-control::placeholder {
+      color: #aaa;
+    }
+
+    .form-control:focus {
+      background-color: #222;
+      color: #fff;
+      border-color: #888;
+      box-shadow: none;
+    }
+
+    .btn-primary {
+      background-color: #fff;
+      color: #000;
+      border: none;
+    }
+
+    .btn-primary:hover {
+      background-color: #ccc;
+      color: #000;
+    }
+
+    a {
+      color: #ccc;
+    }
+
+    a:hover {
+      color: #fff;
+    }
+  </style>
+</head>
+<body>
+  <%- include('./partials/nav.ejs') %>
+
+  <div class="container d-flex justify-content-center align-items-center" style="min-height: 90vh;">
+    <div class="card shadow-lg p-4" style="width: 100%; max-width: 500px;">
+      <h2 class="text-center mb-4">Create Your Account</h2>
+      
+      <form enctype="multipart/form-data" method="POST" action="/user/signup">
+        <div class="mb-3">
+          <label for="username" class="form-label">User Name</label>
+          <input type="text" name="username" class="form-control" id="username" placeholder="Enter your username">
+        </div>
+
+        <div class="mb-3">
+          <label for="exampleInputEmail1" class="form-label">Email address</label>
+          <input type="email" name="email" class="form-control" id="exampleInputEmail1" placeholder="Enter your email">
+        </div>
+
+        <div class="mb-3">
+          <label for="exampleInputPassword1" class="form-label">Password</label>
+          <input type="password" name="password" class="form-control" id="exampleInputPassword1" placeholder="Enter your password">
+        </div>
+
+        <div class="mb-3">
+          <label for="profileImage" class="form-label">Profile Image</label>
+          <input type="file" name="profileImageURL" class="form-control" id="profileImage" accept="image/*">
+        </div>
+
+        <button type="submit" class="btn btn-primary w-100">Sign Up</button>
+        <p class="text-center mt-3 mb-0">Already have an account? <a href="/user/signin">Login here</a></p>
+      </form>
+    </div>
+  </div>
+
+  <%- include('./partials/script.ejs') %>
+</body>
+</html>

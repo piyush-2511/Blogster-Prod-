@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <%- include('./partials/head.ejs') %>
+  <title>404 Not Found | Blogster</title>
+  <style>
+    .not-found-container {
+      text-align: center;
+      margin-top: 100px;
+    }
+
+    .not-found-container h1 {
+      font-size: 6rem;
+      font-weight: bold;
+      color: #ff4d4d;
+    }
+
+    .not-found-container p {
+      font-size: 1.5rem;
+      color: #666;
+    }
+
+    .not-found-container a {
+      margin-top: 20px;
+      display: inline-block;
+      font-size: 1.1rem;
+      text-decoration: none;
+      color: #007bff;
+    }
+
+    .not-found-container a:hover {
+      text-decoration: underline;
+    }
+  </style>
+</head>
+<body>
+  <%- include('./partials/nav.ejs') %>
+
+  <div class="container not-found-container">
+    <h1>404</h1>
+    <p>Oops! The page you're looking for doesn't exist.</p>
+    <a href="/">← Go back to Home</a>
+  </div>
+
+  <%- include('./partials/script.ejs') %>
+</body>
+</html>

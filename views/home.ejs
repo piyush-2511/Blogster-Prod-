@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <%- include('./partials/head.ejs') %>
+  <title>Blogster | Home Page</title>
+  <style>
+    .blog-card img {
+      height: 200px;
+      object-fit: cover;
+    }
+    .blog-card .card-body {
+      max-height: 180px;
+      overflow: hidden;
+    }
+    .blog-link {
+      text-decoration: none;
+      color: inherit;
+    }
+    .blog-card {
+      cursor: pointer;
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+    }
+    .blog-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 8px 16px rgba(0,0,0,0.15);
+    }
+  </style>
+</head>
+<body>
+  <%- include('./partials/nav.ejs') %>
+
+  <div class="container mt-5">
+    <div class="row row-cols-1 row-cols-md-3 g-4">
+      <% blogs.forEach(blog => { %>
+        <div class="col">
+          <a href="/blog/<%= blog._id %>" class="blog-link">
+            <div class="card blog-card h-100 shadow-sm">
+              <img src="/uploads/blog/<%= blog.coverImageURL ? blog.coverImageURL : 'default-blog.jpg' %>" class="card-img-top" alt="Cover Image">
+              <div class="card-body">
+                <h5 class="card-title"><%= blog.title %></h5>
+                <p class="card-text">
+                  <%= blog.body.length > 100 ? blog.body.slice(0, 100) + "..." : blog.body %>
+                </p>
+              </div>
+              <div class="card-footer text-muted d-flex justify-content-between align-items-center">
+                <small>
+                  By <%= blog.createdBy?.username || 'Unknown' %>
+                </small>
+                <small>
+                  <%= blog.createdAt.toLocaleDateString('en-IN', {
+                    day: '2-digit',
+                    month: 'short',
+                    year: 'numeric'
+                  }) %>
+                </small>
+              </div>
+            </div>
+          </a>
+        </div>
+      <% }) %>
+    </div>
+  </div>
+
+  <%- include('./partials/script.ejs') %>
+</body>
+</html>
